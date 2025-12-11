@@ -2,13 +2,11 @@ package carpet.network;
 
 import carpet.CarpetServer;
 import carpet.CarpetSettings;
-import carpet.script.utils.ShapesRenderer;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
@@ -40,8 +38,6 @@ public class CarpetClient
     public static final String HI = "69";
     public static final String HELLO = "420";
 
-    public static ShapesRenderer shapes = null;
-
     private static LocalPlayer clientPlayer = null;
     private static boolean isServerCarpet = false;
     public static String serverCarpetVersion;
@@ -60,10 +56,6 @@ public class CarpetClient
             clientPlayer = null;
             CarpetServer.onServerClosed(null);
             CarpetServer.onServerDoneClosing(null);
-        }
-        else // singleplayer disconnect
-        {
-            CarpetServer.clientPreClosing();
         }
     }
 
